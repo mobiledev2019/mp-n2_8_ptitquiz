@@ -2,18 +2,20 @@ package com.example.ptitquiz.Model;
 
 import java.io.Serializable;
 
-public class Question implements Serializable {
-    private String question,answer,ans1,ans2,ans3,ans4;
-    public Question(){
+public class QuestionReview implements Serializable {
+    private String question, ans1, ans2, ans3,ans4,answer,goiy;
 
+    public QuestionReview() {
     }
-    public Question(String question, String answer, String ans1, String ans2, String ans3, String ans4) {
+
+    public QuestionReview(String question, String ans1, String ans2, String ans3, String ans4, String answer, String goiy) {
         this.question = question;
-        this.answer = answer;
         this.ans1 = ans1;
         this.ans2 = ans2;
         this.ans3 = ans3;
         this.ans4 = ans4;
+        this.answer = answer;
+        this.goiy = goiy;
     }
 
     public String getQuestion() {
@@ -22,14 +24,6 @@ public class Question implements Serializable {
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 
     public String getAns1() {
@@ -62,5 +56,21 @@ public class Question implements Serializable {
 
     public void setAns4(String ans4) {
         this.ans4 = ans4;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public String getGoiy() {
+        return goiy;
+    }
+
+    public void setGoiy(String goiy) {
+        this.goiy = goiy;
     }
 }

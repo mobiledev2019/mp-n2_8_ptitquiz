@@ -47,16 +47,18 @@ public class quiz_test extends AppCompatActivity {
             intent.putExtra("Đúng",String.valueOf(ca));
             intent.putExtra("Số điểm",String.valueOf(score));
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         }else{
             //tham chiếu đến môn học
             Intent intent = getIntent();
-            String message = intent.getStringExtra("truyendulieu");
-            if(message.equals("Mạng máy tính")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Mmt").child(String.valueOf(index));
-            if(message.equals("Lập trình web")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Ltw").child(String.valueOf(index));
-            if(message.equals("An toàn bảo mật")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Atbm").child(String.valueOf(index));
-            if(message.equals("Xác suất thống kê")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Xstk").child(String.valueOf(index));
-            if(message.equals("Hệ điều hành Win/Unix/Linux")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Wul").child(String.valueOf(index));
-            if(message.equals("Quản lý dự án phần mềm")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Qldapm").child(String.valueOf(index));
+             String message = intent.getStringExtra("truyendulieu");
+             String made = intent.getStringExtra("made");
+//            if(message.equals("Mạng máy tính")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Mmt").child(String.valueOf(index));
+//            if(message.equals("Lập trình web")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Ltw").child(String.valueOf(index));
+//            if(message.equals("An toàn bảo mật")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Atbm").child(String.valueOf(index));
+//            if(message.equals("Xác suất thống kê")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Xstk").child(String.valueOf(index));
+//            if(message.equals("Hệ điều hành Win/Unix/Linux")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Wul").child(String.valueOf(index));
+             reference = FirebaseDatabase.getInstance().getReference().child("Subject").child(message).child(made).child(String.valueOf(index));
             //------
 
             txtScore.setText(String.valueOf(score));

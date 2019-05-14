@@ -9,12 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyAppPTITQuiz.start_quiz"></activity>
+
+        <activity android:name=".MyAppPTITQuiz.start_review" />
+        <activity android:name=".MyAppPTITQuiz.result_review" />
+        <activity android:name=".MyAppPTITQuiz.review_test" />
+        <activity android:name=".MyAppPTITQuiz.selectsubject" />
+        <activity android:name=".MyAppPTITQuiz.start_quiz" />
         <activity android:name=".MyAppPTITQuiz.time_up" />
         <activity android:name=".MyAppPTITQuiz.result" />
         <activity android:name=".MyAppPTITQuiz.quiz_test" />
         <activity android:name=".MyAppPTITQuiz.homeActivity" />
-        <activity android:name=".MyAppPTITQuiz.MainActivity">
+        <activity android:name=".MyAppPTITQuiz.MainActivity"/>
+        <activity android:name=".MyAppPTITQuiz.IntroApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

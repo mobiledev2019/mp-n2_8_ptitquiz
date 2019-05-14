@@ -31,6 +31,7 @@ public class time_up extends AppCompatActivity {
                 result.putExtra("Đúng",Ca);
                 result.putExtra("Số điểm",sco);
                 startActivity(result);
+                overridePendingTransition(R.anim.slide_out_left,R.anim.slide_in_right);
             }
         });
     }

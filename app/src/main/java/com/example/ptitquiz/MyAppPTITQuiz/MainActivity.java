@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, homeActivity.class);
                             intent.putExtra("Username",user);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
                         }
                         else{
                             Toast.makeText(MainActivity.this, "Sai mật khẩu! ", Toast.LENGTH_SHORT).show();
