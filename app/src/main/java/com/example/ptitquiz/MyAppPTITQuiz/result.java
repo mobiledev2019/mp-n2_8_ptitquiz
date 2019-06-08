@@ -24,33 +24,16 @@ public class result extends AppCompatActivity {
         setContentView(R.layout.activity_result);
         //Firebase
         database = FirebaseDatabase.getInstance();
-        rank = database.getReference("Rank");
         anhxa();
         Intent intent = getIntent();
-        String username = intent.getStringExtra("Username");
+//        String username = intent.getStringExtra("Username");
         String message = intent.getStringExtra("Môn học");
         String total = intent.getStringExtra("Tổng");
         String Ca = intent.getStringExtra("Đúng");
         String sco = intent.getStringExtra("Số điểm");
-//        updateRank(sco, message,username);
         txtCa.setText(String.format("Số câu đúng : "+Ca+"/10"));
         txtScore.setText(String.format("Số điểm : "+ sco));
-//        rank.child(message).child(username).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                //edtRank.setText(dataSnapshot.getValue(String.class));
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
     }
-
-//    private void updateRank(String sco, String message, String username) {
-//        rank.child(message).child(username).setValue(sco);
-//    }
 
     private void anhxa() {
         txtCa = findViewById(R.id.txtCa);
@@ -60,10 +43,12 @@ public class result extends AppCompatActivity {
     public void Logout(View view) {
         Intent intent = new Intent(result.this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 
     public void Return(View view) {
-        Intent intent = new Intent(result.this, homeActivity.class);
+        Intent intent = new Intent(result.this, base.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
     }
 }

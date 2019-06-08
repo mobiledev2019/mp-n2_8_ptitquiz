@@ -7,6 +7,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class MainActivity extends AppCompatActivity {
     EditText edtUser,edtPassWord;  //Cho chức năng đăng nhập
@@ -29,10 +33,29 @@ public class MainActivity extends AppCompatActivity {
     Button btnSignUp,btnSignIn;
     FirebaseDatabase database;
     DatabaseReference users;
+
+
+    EditText tokenText;
+    Button getToken;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Token
+//        tokenText = (EditText) findViewById(R.id.tokenText);
+//        getToken = (Button) findViewById(R.id.getTokenButton);
+//        getToken.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                tokenText.setText(FirebaseInstanceId.getInstance().getToken());
+//            }
+//        });
+        //
+
         //Tham chiếu đến CSDL Firebase
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
@@ -78,9 +101,11 @@ public class MainActivity extends AppCompatActivity {
                     if(!user.isEmpty()){
                         User login = dataSnapshot.child(user).getValue(User.class);
                         if(login.getPassword().equals(pwd)){
-                            Intent intent = new Intent(MainActivity.this, homeActivity.class);
+                            Intent intent = new Intent(MainActivity.this, base.class);
                             intent.putExtra("Username",user);
                             startActivity(intent);
+                            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+
                         }
                         else{
                             Toast.makeText(MainActivity.this, "Sai mật khẩu! ", Toast.LENGTH_SHORT).show();
@@ -198,4 +223,5 @@ public class MainActivity extends AppCompatActivity {
         //-------
         alertDialog.show();
     }
+
 }

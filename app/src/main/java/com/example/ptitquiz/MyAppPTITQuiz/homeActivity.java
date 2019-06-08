@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Toolbar;
 
 import com.example.ptitquiz.Adapter.HinhAnhAdapter;
 import com.example.ptitquiz.Model.image;
@@ -26,34 +27,40 @@ public class homeActivity extends AppCompatActivity {
         gvHinhAnh.setAdapter(adapter);
         Intent receive = getIntent();
         final String message = receive.getStringExtra("Username");
-        final Intent intent = new Intent(homeActivity.this, start_quiz.class);
+        final Intent intent = new Intent(homeActivity.this, selectsubject.class);
         gvHinhAnh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(arrayImage.get(position).getTen().equals("Mạng máy tính")){
-                    intent.putExtra("truyendulieu","Mạng máy tính");
+                    intent.putExtra("truyendulieu","Mmt");
                 }
                 if(arrayImage.get(position).getTen().equals("Lập trình web")){
-                    intent.putExtra("truyendulieu","Lập trình web");
+                    intent.putExtra("truyendulieu","Ltw");
                 }
                 if(arrayImage.get(position).getTen().equals("An toàn bảo mật")){
-                    intent.putExtra("truyendulieu","An toàn bảo mật");
+                    intent.putExtra("truyendulieu","Atbm");
                 }
                 if(arrayImage.get(position).getTen().equals("Xác suất thống kê")){
-                    intent.putExtra("truyendulieu","Xác suất thống kê");
+                    intent.putExtra("truyendulieu","Xstk");
                 }
                 if(arrayImage.get(position).getTen().equals("Hệ điều hành Win/Unix/Linux")){
-                    intent.putExtra("truyendulieu","Hệ điều hành Win/Unix/Linux");
+                    intent.putExtra("truyendulieu","Wul");
                 }
                 if(arrayImage.get(position).getTen().equals("Quản lý dự án phần mềm")){
-                    intent.putExtra("truyendulieu","Quản lý dự án phần mềm");
+                    intent.putExtra("truyendulieu","Qldapm");
                 }
                 intent.putExtra("Username",message);
                 startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             }
         });
-    }
 
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     private void Anhxa() {
         gvHinhAnh = (GridView) findViewById(R.id.gridviewHinhAnh);
         arrayImage = new ArrayList<>();
@@ -68,5 +75,7 @@ public class homeActivity extends AppCompatActivity {
     public void Logout(View view) {
         Intent intent = new Intent(homeActivity.this, MainActivity.class);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.slide_out_right,android.R.anim.slide_in_left);
     }
+
 }
