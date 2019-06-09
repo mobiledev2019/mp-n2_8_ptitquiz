@@ -10,11 +10,7 @@ import android.widget.TextView;
 import com.example.ptitquiz.R;
 
 public class exam extends AppCompatActivity {
-<<<<<<< HEAD
     TextView txtSV,txtMT,txtMDT;
-=======
-    TextView txtSV,txtMT;
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
     Button btnExam;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +18,13 @@ public class exam extends AppCompatActivity {
         setContentView(R.layout.activity_exam);
         txtSV = findViewById(R.id.txtSV);
         txtMT = findViewById(R.id.txtMT);
-<<<<<<< HEAD
         txtMDT = findViewById(R.id.txtMDT);
         btnExam = findViewById(R.id.btnExam);
         final Intent intent = getIntent();
         txtMT.setText(intent.getStringExtra("truyendulieu"));
         txtMDT.setText(intent.getStringExtra("dethi"));
-=======
-        btnExam = findViewById(R.id.btnExam);
-        final Intent intent = getIntent();
-        txtMT.setText(intent.getStringExtra("truyendulieu"));
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
         txtSV.setText(intent.getStringExtra("sinhvien"));
+        btnExam = findViewById(R.id.btnExam);
         btnExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,12 +47,8 @@ public class exam extends AppCompatActivity {
                 if(intent.getStringExtra("truyendulieu").equals("Quản lý dự án phần mềm")){
                     intent2.putExtra("truyendulieu","Qldapm");
                 }
-<<<<<<< HEAD
                 intent2.putExtra("dethi",intent.getStringExtra("dethi"));
                 intent2.putExtra("Username",intent.getStringExtra(intent.getStringExtra("sinhvien")));
-=======
-                intent2.putExtra("made","Đề 1");
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                 startActivity(intent2);
             }
         });

@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <activity android:name=".MyAppPTITQuiz.ResultGpa"
             android:parentActivityName=".MyAppPTITQuiz.GPA"></activity>
         <activity android:name=".MyAppPTITQuiz.GPA"
@@ -28,9 +27,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-=======
-        <activity android:name=".MyAppPTITQuiz.exam"></activity>
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
         <activity
             android:name=".About"
             android:parentActivityName=".MyAppPTITQuiz.base" />
@@ -49,9 +45,6 @@
             android:name=".MyAppPTITQuiz.selectsubject"
             android:parentActivityName=".MyAppPTITQuiz.homeActivity" />
         <activity android:name=".MyAppPTITQuiz.result_review" />
-<<<<<<< HEAD
-        <activity android:name=".MyAppPTITQuiz.IntroApp">
-=======
         <activity android:name=".MyAppPTITQuiz.IntroApp" />
         <activity
             android:name=".MyAppPTITQuiz.start_quiz"
@@ -69,28 +62,12 @@
             android:name=".MyAppPTITQuiz.homeActivity"
             android:parentActivityName=".MyAppPTITQuiz.base" />
         <activity android:name=".MyAppPTITQuiz.MainActivity">
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MyAppPTITQuiz.start_quiz"
-            android:parentActivityName=".MyAppPTITQuiz.selectsubject" />
-        <activity android:name=".MyAppPTITQuiz.time_up" />
-        <activity android:name=".MyAppPTITQuiz.result" />
-        <activity android:name=".MyAppPTITQuiz.quiz_test" />
-        <activity
-            android:name=".MyAppPTITQuiz.homeActivity"
-            android:parentActivityName=".MyAppPTITQuiz.base" />
-        <activity android:name=".MyAppPTITQuiz.MainActivity" />
-
-        <receiver
-            android:name=".MyAppPTITQuiz.MyAlarm"
-            android:enabled="true"
-            android:exported="true" />
 
         <receiver
             android:name=".MyAppPTITQuiz.MyAlarm"

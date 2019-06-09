@@ -45,7 +45,6 @@ public class MyFirebaseService extends FirebaseMessagingService {
         // Xử lý thông báo.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-            remoteMessage.getData();
             sendNotification(remoteMessage.getNotification().getBody(), remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getClickAction());
 
         }
@@ -75,17 +74,10 @@ public class MyFirebaseService extends FirebaseMessagingService {
 //        }
 
 
-<<<<<<< HEAD
             Intent intent = new Intent(this, exam.class);
             intent.putExtra("sinhvien",messageTitle);
             intent.putExtra("truyendulieu",messageBody);
             intent.putExtra("dethi",click_action);
-=======
-        if(click_action.equals("MyFirebaseService")){
-            Intent intent = new Intent(this, exam.class);
-            intent.putExtra("sinhvien",messageTitle);
-            intent.putExtra("truyendulieu",messageBody);
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
             String channelId = getString(R.string.project_id);
@@ -101,11 +93,6 @@ public class MyFirebaseService extends FirebaseMessagingService {
                     .setPriority(NotificationManager.IMPORTANCE_HIGH);
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(0, notificationBuilder.build());
-<<<<<<< HEAD
-
-=======
-        }
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
 
 
     }

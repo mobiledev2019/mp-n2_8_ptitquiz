@@ -68,10 +68,8 @@ public class quiz_test extends AppCompatActivity {
             Intent intent = getIntent();
             String message = intent.getStringExtra("truyendulieu");
             String made = intent.getStringExtra("made");
-<<<<<<< HEAD
             reference = FirebaseDatabase.getInstance().getReference().child("Subject").child(message).child(made).child(String.valueOf(index));
             //------
-=======
 //            if(message.equals("Mạng máy tính")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Mmt").child(String.valueOf(index));
 //            if(message.equals("Lập trình web")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Ltw").child(String.valueOf(index));
 //            if(message.equals("An toàn bảo mật")) reference = FirebaseDatabase.getInstance().getReference().child("Subject").child("Atbm").child(String.valueOf(index));
@@ -80,7 +78,6 @@ public class quiz_test extends AppCompatActivity {
             reference = FirebaseDatabase.getInstance().getReference().child("Subject").child(message).child(made).child(String.valueOf(index));
             //------
 
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
 //            txtScore.setText(String.valueOf(score));
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -97,10 +94,7 @@ public class quiz_test extends AppCompatActivity {
                         public void onClick(View v) {
                             btnAnswer1.setBackgroundColor(Color.parseColor("#EC9000"));
                             if(btnAnswer1.getText().toString().equals(question.getAnswer())){
-<<<<<<< HEAD
-=======
 //                                btnAnswer1.setBackgroundColor(Color.parseColor("#19D604"));
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -115,8 +109,6 @@ public class quiz_test extends AppCompatActivity {
                             else{
                                 wa++;
                                 if(score>0) score-=5;
-<<<<<<< HEAD
-=======
 //                                btnAnswer1.setBackgroundColor(Color.parseColor("#EC9000"));
 //                                if(btnAnswer2.getText().toString().equals(question.getAnswer())){
 //                                    btnAnswer2.setBackgroundColor(Color.parseColor("#19D604"));
@@ -125,7 +117,6 @@ public class quiz_test extends AppCompatActivity {
 //                                }else if(btnAnswer4.getText().toString().equals(question.getAnswer())){
 //                                    btnAnswer4.setBackgroundColor(Color.parseColor("#19D604"));
 //                                }
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -160,8 +151,6 @@ public class quiz_test extends AppCompatActivity {
                             else{
                                 wa++;
                                 if(score>0) score-=5;
-<<<<<<< HEAD
-=======
 //                                btnAnswer2.setBackgroundColor(Color.parseColor("#EC9000"));
 //                                if(btnAnswer1.getText().toString().equals(question.getAnswer())){
 //                                    btnAnswer1.setBackgroundColor(Color.parseColor("#19D604"));
@@ -170,7 +159,6 @@ public class quiz_test extends AppCompatActivity {
 //                                }else if(btnAnswer4.getText().toString().equals(question.getAnswer())){
 //                                    btnAnswer4.setBackgroundColor(Color.parseColor("#19D604"));
 //                                }
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -190,10 +178,7 @@ public class quiz_test extends AppCompatActivity {
                         public void onClick(View v) {
                             btnAnswer3.setBackgroundColor(Color.parseColor("#EC9000"));
                             if(btnAnswer3.getText().toString().equals(question.getAnswer())){
-<<<<<<< HEAD
-=======
 //                                btnAnswer3.setBackgroundColor(Color.parseColor("#19D604"));
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -208,8 +193,6 @@ public class quiz_test extends AppCompatActivity {
                             else{
                                 wa++;
                                 if(score>0) score-=5;
-<<<<<<< HEAD
-=======
 //                                btnAnswer3.setBackgroundColor(Color.parseColor("#EC9000"));
 //                                if(btnAnswer2.getText().toString().equals(question.getAnswer())){
 //                                    btnAnswer2.setBackgroundColor(Color.parseColor("#19D604"));
@@ -218,7 +201,6 @@ public class quiz_test extends AppCompatActivity {
 //                                }else if(btnAnswer4.getText().toString().equals(question.getAnswer())){
 //                                    btnAnswer4.setBackgroundColor(Color.parseColor("#19D604"));
 //                                }
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -238,10 +220,7 @@ public class quiz_test extends AppCompatActivity {
                         public void onClick(View v) {
                             btnAnswer4.setBackgroundColor(Color.parseColor("#EC9000"));
                             if(btnAnswer4.getText().toString().equals(question.getAnswer())){
-<<<<<<< HEAD
-=======
 //                                btnAnswer4.setBackgroundColor(Color.parseColor("#19D604"));
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -256,8 +235,6 @@ public class quiz_test extends AppCompatActivity {
                             else{
                                 wa++;
                                 if(score>0) score-=5;
-<<<<<<< HEAD
-=======
 //                                btnAnswer4.setBackgroundColor(Color.parseColor("#EC9000"));
 //                                if(btnAnswer2.getText().toString().equals(question.getAnswer())){
 //                                    btnAnswer2.setBackgroundColor(Color.parseColor("#19D604"));
@@ -266,7 +243,6 @@ public class quiz_test extends AppCompatActivity {
 //                                }else if(btnAnswer1.getText().toString().equals(question.getAnswer())){
 //                                    btnAnswer1.setBackgroundColor(Color.parseColor("#19D604"));
 //                                }
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                                 Handler handler = new Handler();
                                 handler.postDelayed(new Runnable() {
                                     @Override
@@ -294,9 +270,7 @@ public class quiz_test extends AppCompatActivity {
         if(index2==10){
             Intent receive = getIntent();
             String message = receive.getStringExtra("truyendulieu");
-            String username = receive.getStringExtra("Username");
             Intent intent = new Intent(quiz_test.this, result.class);
-            intent.putExtra("Username", username);
             intent.putExtra("Môn học", message);
             intent.putExtra("Tổng",String.valueOf(index2));
             intent.putExtra("Đúng",String.valueOf(ca));

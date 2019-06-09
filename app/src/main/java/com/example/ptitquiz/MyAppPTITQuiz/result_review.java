@@ -47,10 +47,6 @@ public class result_review extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,14 +56,6 @@ public class result_review extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
-
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
     }
 
     private void AnhXa(){

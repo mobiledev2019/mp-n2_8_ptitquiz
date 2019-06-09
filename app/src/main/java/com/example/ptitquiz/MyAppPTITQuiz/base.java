@@ -14,10 +14,7 @@ import android.widget.GridView;
 import com.example.ptitquiz.About;
 import com.example.ptitquiz.Adapter.baseImageAdapter;
 import com.example.ptitquiz.Model.baseImage;
-<<<<<<< HEAD
 import com.example.ptitquiz.Notification.NotificationEvery;
-=======
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
 import com.example.ptitquiz.R;
 
 import java.util.ArrayList;
@@ -38,16 +35,11 @@ public class base extends AppCompatActivity {
         gvHinhAnh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-<<<<<<< HEAD
                 if(arrayImage.get(position).getTen().equals("Kiểm tra & Ôn tập")){
-=======
-                if(arrayImage.get(position).getTen().equals("ATTENDANCE")){
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                     Intent intent = new Intent(base.this, homeActivity.class);
                     intent.putExtra("Username",message);
                     startActivity(intent);
                 }
-<<<<<<< HEAD
                 if(arrayImage.get(position).getTen().equals("Lập lịch ôn tập")){
                     Intent launchIntent = new Intent(base.this, Scheduler.class);
                     startActivity(launchIntent);
@@ -60,12 +52,10 @@ public class base extends AppCompatActivity {
                     Intent intent2 = new Intent(base.this, GPA.class);
                     startActivity(intent2);
                 }
-=======
                 if(arrayImage.get(position).getTen().equals("SCHEDULER")){
                     Intent launchIntent = new Intent(base.this, Scheduler.class);
                     startActivity(launchIntent);
                 }
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
             }
         });
     }
@@ -73,15 +63,10 @@ public class base extends AppCompatActivity {
     private void Anhxa() {
         gvHinhAnh = (GridView) findViewById(R.id.grid);
         arrayImage = new ArrayList<>();
-<<<<<<< HEAD
         arrayImage.add(new baseImage("Kiểm tra & Ôn tập", R.drawable.ic_attendance));
         arrayImage.add(new baseImage("Lập lịch ôn tập", R.drawable.ic_schedule));
         arrayImage.add(new baseImage("Học ngẫu nhiên", R.drawable.ic_setting1));
         arrayImage.add(new baseImage("Tính thử điểm", R.drawable.ic_gpa));
-=======
-        arrayImage.add(new baseImage("ATTENDANCE", R.drawable.ic_attendance));
-        arrayImage.add(new baseImage("SCHEDULER", R.drawable.ic_schedule));
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
     }
     public void about(MenuItem item) {
         Intent intent = new Intent(this, About.class);

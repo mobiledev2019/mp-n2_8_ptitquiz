@@ -12,12 +12,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/classSelector"
-<<<<<<< HEAD
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"/>
-=======
-                android:layout_gravity="center_horizontal" />
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -29,15 +25,9 @@
                 />
             <DatePicker
                 android:id="@+id/scheduleTimePicker"
-<<<<<<< HEAD
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/subjectName" />
-=======
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/subjectName"/>
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
             <TimePicker
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -46,11 +36,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
                 android:text="ĐẶT LỊCH"
-=======
-                android:text="SAVE"
->>>>>>> b59571816ec6d783cf6145b1344aed82bd808728
                 android:background="@color/colorPrimaryDark"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
