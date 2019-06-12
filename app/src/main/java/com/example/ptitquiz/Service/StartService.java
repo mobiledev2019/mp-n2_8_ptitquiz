@@ -36,7 +36,6 @@ public class StartService extends Service {
     private int index = 0;
     DatabaseReference reference;
 
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -46,7 +45,6 @@ public class StartService extends Service {
 
     @Override
     public void onCreate() {
-
         check = 0;
         super.onCreate();
     }
@@ -54,22 +52,16 @@ public class StartService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         int minute = 0;
-
         if(intent != null){
             getMonQuanTam = intent.getStringExtra("chudequantam");
             minute = Integer.parseInt(intent.getStringExtra("minute"));
         }
-
-
-
        // Toast.makeText(this, minute+"", Toast.LENGTH_SHORT).show();
         if(check == 0){
             MyTimerTask myTask = new MyTimerTask();
             myTimer = new Timer();
-
                 myTimer.schedule(myTask, minute*60*1000, minute*60*1000);
                 //myTimer.schedule(myTask, 5000, 20000);
-
             check = 1;
         }
         return START_REDELIVER_INTENT;
@@ -94,37 +86,24 @@ public class StartService extends Service {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         QuestionNotify questionNotify = dataSnapshot.getValue(QuestionNotify.class);
                         String question = questionNotify.getQuestion();
-
                         displayNotify(getApplicationContext(),question,monQuanTam,String.valueOf(index));
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
                     }
                 });
-
             }
-
-
         }
     }
 
-
     public void displayNotify(Context context, String message,String nameSubject,String index) {
-
         createNotificationChannel();
-
-
         //NotifyQuizActivity
         Intent notifyquiz = new Intent(this, NotifyQuiz.class);
         notifyquiz.putExtra("chudequantam",nameSubject);
         notifyquiz.putExtra("index",index);
         notifyquiz.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent yesPendingIntent = PendingIntent.getActivity(this,0,notifyquiz,PendingIntent.FLAG_ONE_SHOT);
-
-
-
         //Tắt thông báo NotificationEvery
         long when = System.currentTimeMillis();
         Intent notifyevery = new Intent(this, NotificationEvery.class);
@@ -144,18 +123,14 @@ public class StartService extends Service {
         builder.addAction(R.drawable.alarm, "Tắt thông báo", setting);
         NotificationManagerCompat notificationManagerCompat =  NotificationManagerCompat.from(this);
         notificationManagerCompat.notify(NOTIFICATION_ID,builder.build());
-
     }
     private void createNotificationChannel(){
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O){
             CharSequence name = "Personal Notifications";
             String description = "Thông báo kiểm tra theo chu kỳ!";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
-
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,importance);
-
             notificationChannel.setDescription(description);
-
             NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(notificationChannel);
         }
@@ -182,7 +157,6 @@ public class StartService extends Service {
             case "Hệ điều hành Win/Unix/Linux":
                 str = "Wul";
                 break;
-
         }
         return str;
     }

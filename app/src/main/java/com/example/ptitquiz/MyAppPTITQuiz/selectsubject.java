@@ -46,8 +46,6 @@ public class selectsubject extends AppCompatActivity {
     private CheckBox ckb_giaithich;
     List<String> list ;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +53,11 @@ public class selectsubject extends AppCompatActivity {
         AnhXa();
         Intent receive = getIntent();
         String monhoc = receive.getStringExtra("truyendulieu");
-
         if(monhoc!=null){
 
             ChangedTitle(monhoc);
             HienThiMucLuc(monhoc);
         }
-
-
-
-
         relativeLayout.setVisibility(View.INVISIBLE);
         reLayoutChonChuong.setVisibility(View.INVISIBLE);
         final List<String> arrChuong = new ArrayList<>();
@@ -72,12 +65,9 @@ public class selectsubject extends AppCompatActivity {
         arrChuong.add("C1");
         arrChuong.add("C2");
         arrChuong.add("C3");
-
-
         ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrChuong);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spinnerChonChuong.setAdapter(adapter);
-
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +109,6 @@ public class selectsubject extends AppCompatActivity {
                 }
             }
         });
-
         spinnerChonChuong.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -133,12 +122,9 @@ public class selectsubject extends AppCompatActivity {
             }
         });
         SuKienCBGiaiThich();
-
-
     }
 
     public void AnhXa(){
-
         ckb_giaithich = findViewById(R.id.chk_giaithich);
         tvTitlemucLuc = findViewById(R.id.tvtitlemucluc);
         lv_mucluc = findViewById(R.id.lv_mucluc);
@@ -149,7 +135,6 @@ public class selectsubject extends AppCompatActivity {
         radioQuiz = findViewById(R.id.radio_quiz);
         radioReview = findViewById(R.id.radio_review);
         btnSelect = findViewById(R.id.btnSelect);
-
     }
 
     private void ExeRadioQuiz(){
@@ -160,7 +145,6 @@ public class selectsubject extends AppCompatActivity {
         intent.putExtra("Subject","Quiz");
         startActivity(intent);
         overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-
     }
 
     private void ExeRadioReview(){
@@ -173,10 +157,8 @@ public class selectsubject extends AppCompatActivity {
             intent.putExtra("giaithich",giaiThich);
         }
         intent.putExtra("chuong",selectChuong);
-
         startActivity(intent);
         overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-
     }
 
     private void HienThiMucLuc(String monhoc){
@@ -184,37 +166,27 @@ public class selectsubject extends AppCompatActivity {
         final ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
         lv_mucluc.setAdapter(myArrayAdapter);
         reference = FirebaseDatabase.getInstance().getReference().child("QuestionReview").child(monhoc).child("mucluc");
-
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String myChildValue = dataSnapshot.getValue(String.class);
                 list.add(myChildValue);
                 myArrayAdapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 myArrayAdapter.notifyDataSetChanged();
             }
-
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
             }
-
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
     }
 
     private void ChangedTitle(String monhoc){
@@ -265,11 +237,4 @@ public class selectsubject extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
-
-
-
-
-
 }

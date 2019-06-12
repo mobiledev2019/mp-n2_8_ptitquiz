@@ -50,8 +50,6 @@ public class Scheduler extends AppCompatActivity implements AdapterView.OnItemLo
         database = new Database(this, "ghichu.sqlite",null,1);
         //Tao bang CongViec
         database.QueryData("CREATE TABLE IF NOT EXISTS LapLich(tieude VARCHAR(200), gio VARCHAR(200), noidung VARCHAR(200))");
-//        database.QueryData("DROP TABLE IF EXISTS LapLich");
-//        database.QueryData("INSERT INTO LapLich VALUES('1234','1234','1234')");
         GetDataLapLich();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_sch);
         assert fab != null;
@@ -63,7 +61,6 @@ public class Scheduler extends AppCompatActivity implements AdapterView.OnItemLo
             }
         });
         lvLapLich.setOnItemLongClickListener(this);
-
     }
 
     private void GetDataLapLich() {
@@ -81,9 +78,7 @@ public class Scheduler extends AppCompatActivity implements AdapterView.OnItemLo
             subx.add(noidung);
             arrayLapLich.add(new LapLich(gio,noidung));
         }
-
         adapter.notifyDataSetChanged();
-
     }
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -112,7 +107,6 @@ public class Scheduler extends AppCompatActivity implements AdapterView.OnItemLo
     public void refresh(MenuItem item) {
         GetDataLapLich();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -120,5 +114,4 @@ public class Scheduler extends AppCompatActivity implements AdapterView.OnItemLo
         inflater.inflate(R.menu.scheduler_menu, menu);
         return true;
     }
-
 }

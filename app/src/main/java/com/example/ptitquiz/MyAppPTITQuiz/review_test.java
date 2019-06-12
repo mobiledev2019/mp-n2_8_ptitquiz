@@ -30,9 +30,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class review_test extends AppCompatActivity  {
-
-
-    CountDownTimer mCountDownTime;
     int index = 1, ca = 0, wa = 0;
     String selectChuong;
     //Firebase
@@ -43,16 +40,10 @@ public class review_test extends AppCompatActivity  {
     Button btnAns1, btnAns2, btnAns3, btnAns4,btnGoiY;
     ArrayList<String> listSai;
     String causai;
-
     QuestionReview questionReview;
-
     public review_test() {
         listSai = new ArrayList<>();
-
-
-
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,18 +52,13 @@ public class review_test extends AppCompatActivity  {
         Intent re = getIntent();
 //        giaithich = re.getStringExtra("giaithich");
         final String chuong = re.getStringExtra("chuong");
-
-
         Playing();
-
-
     }
 
     private void AnhXa() {
         //firebase
         database = FirebaseDatabase.getInstance();
         questions = database.getReference();
-
         //Views
         txtQuestion = findViewById(R.id.txtQuestion);
         btnAns1 = findViewById(R.id.btnAnswer1);
@@ -80,45 +66,32 @@ public class review_test extends AppCompatActivity  {
         btnAns3 = findViewById(R.id.btnAnswer3);
         btnAns4 = findViewById(R.id.btnAnswer4);
         btnGoiY = findViewById(R.id.btnGoiY);
-
-
-
-
     }
 
     private void Playing() {
         if (index > 3) { // nếu dùng hết
-
             Intent intent = new Intent(review_test.this,result_review.class);
             intent.putStringArrayListExtra("listcausai",listSai);
             intent.putExtra("caudung",String.valueOf(ca));
             intent.putExtra("causai",String.valueOf(wa));
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-
         } else {
             //đang chơi
-
             Intent receive = getIntent();
             selectChuong = receive.getStringExtra("chuong");
             String message = receive.getStringExtra("truyendulieu");
-
-
             questions = FirebaseDatabase.getInstance().getReference().child("QuestionReview").child(message).child(selectChuong).child(String.valueOf(index));
-
-
             questions.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     questionReview = dataSnapshot.getValue(QuestionReview.class);
-
                     txtQuestion.setText("Câu "+index+": "+questionReview.getQuestion());
                     index++;
                     btnAns1.setText(questionReview.getAns1());
                     btnAns2.setText(questionReview.getAns2());
                     btnAns3.setText(questionReview.getAns3());
                     btnAns4.setText(questionReview.getAns4());
-
                     btnAns1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -134,7 +107,6 @@ public class review_test extends AppCompatActivity  {
                                     }
                                 }, 1000);
                             } else {
-
                                 cauSai();
                                 wa++;
                                 btnAns1.setBackgroundColor(Color.parseColor("#EC9000"));
@@ -170,13 +142,11 @@ public class review_test extends AppCompatActivity  {
                                     @Override
                                     public void run() {
                                         ca++;
-
                                         btnAns2.setBackgroundColor(Color.parseColor("#00468F"));
                                         Playing();
                                     }
                                 }, 1000);
                             } else {
-
                                 wa++;
                                 cauSai();
                                 btnAns2.setBackgroundColor(Color.parseColor("#EC9000"));
@@ -216,7 +186,6 @@ public class review_test extends AppCompatActivity  {
                                     }
                                 }, 1000);
                             } else {
-
                                 wa++;
                                 cauSai();
                                 btnAns3.setBackgroundColor(Color.parseColor("#EC9000"));
@@ -241,7 +210,6 @@ public class review_test extends AppCompatActivity  {
                             }
                         }
                     });
-
                     btnAns4.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -257,7 +225,6 @@ public class review_test extends AppCompatActivity  {
                                     }
                                 }, 1000);
                             } else {
-
                                 wa++;
                                 cauSai();
                                 btnAns4.setBackgroundColor(Color.parseColor("#EC9000"));
@@ -282,7 +249,6 @@ public class review_test extends AppCompatActivity  {
                             }
                         }
                     });
-
                     btnGoiY.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -290,14 +256,10 @@ public class review_test extends AppCompatActivity  {
                         }
                     });
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 }
             });
-
-
         }
     }
 
@@ -306,48 +268,31 @@ public class review_test extends AppCompatActivity  {
         dialog.setTitle(title);
         dialog.setIcon(R.drawable.explain);
         dialog.setMessage(content);
-
         dialog.setNegativeButton("Thoát", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
-
         dialog.show();
     }
 
-
     private  void cauSai(){
-
-
         questions.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 QuestionReview questionWrong = dataSnapshot.getValue(QuestionReview.class);
                 causai =  "Câu "+(index-1)+":"+questionWrong.getQuestion() + " Đ.á: "+questionWrong.getAnswer();
                 listSai.add(causai);
-
                 Intent intent = getIntent();
                 String gt = intent.getStringExtra("giaithich");
-
                 if(gt!=null){
                     Dialog(questionWrong.getGoiy(),"Giải thích");
                 }
-
-
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
-
-
-
-
 }

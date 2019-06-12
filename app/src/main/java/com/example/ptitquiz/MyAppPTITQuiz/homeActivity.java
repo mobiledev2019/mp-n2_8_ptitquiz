@@ -72,10 +72,4 @@ public class homeActivity extends AppCompatActivity {
         arrayImage.add(new image("Quản lý dự án phần mềm", R.drawable.qldapm));
     }
 
-    public void Logout(View view) {
-        Intent intent = new Intent(homeActivity.this, MainActivity.class);
-        startActivity(intent);
-        overridePendingTransition(android.R.anim.slide_out_right,android.R.anim.slide_in_left);
-    }
-
 }

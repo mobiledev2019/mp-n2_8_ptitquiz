@@ -11,16 +11,12 @@ import com.example.ptitquiz.R;
 
 public class start_review extends AppCompatActivity {
     private Button btnPlay;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_review);
-
         //Ánh xạ button play
         btnPlay = findViewById(R.id.btnPlay);
-
         btnPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,11 +28,9 @@ public class start_review extends AppCompatActivity {
                 intent.putExtra("chuong",receive.getStringExtra("chuong"));
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-
             }
         });
     }
-
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
         if ((keyCode == KeyEvent.KEYCODE_BACK))
@@ -48,6 +42,4 @@ public class start_review extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
 }

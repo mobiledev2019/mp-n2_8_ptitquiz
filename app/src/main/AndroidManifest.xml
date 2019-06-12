@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo"
+        android:icon="@drawable/logo_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -45,7 +45,14 @@
             android:name=".MyAppPTITQuiz.selectsubject"
             android:parentActivityName=".MyAppPTITQuiz.homeActivity" />
         <activity android:name=".MyAppPTITQuiz.result_review" />
-        <activity android:name=".MyAppPTITQuiz.IntroApp" />
+        <activity android:name=".MyAppPTITQuiz.IntroApp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".MyAppPTITQuiz.start_quiz"
             android:parentActivityName=".MyAppPTITQuiz.selectsubject">
@@ -62,11 +69,6 @@
             android:name=".MyAppPTITQuiz.homeActivity"
             android:parentActivityName=".MyAppPTITQuiz.base" />
         <activity android:name=".MyAppPTITQuiz.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <receiver

@@ -33,18 +33,13 @@ public class MainActivity extends AppCompatActivity {
     Button btnSignUp,btnSignIn;
     FirebaseDatabase database;
     DatabaseReference users;
-
-
     EditText tokenText;
     Button getToken;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //Token
 //        tokenText = (EditText) findViewById(R.id.tokenText);
 //        getToken = (Button) findViewById(R.id.getTokenButton);
@@ -55,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
         //
-
         //Tham chiếu đến CSDL Firebase
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
@@ -105,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("Username",user);
                             startActivity(intent);
                             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
-
                         }
                         else{
                             Toast.makeText(MainActivity.this, "Sai mật khẩu! ", Toast.LENGTH_SHORT).show();
@@ -130,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         //Tạo hộp thoại Đăng ký thành viên mới
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
         alertDialog.setTitle("Đăng ký");
-        alertDialog.setIcon(R.mipmap.signup);
+        alertDialog.setIcon(R.drawable.signup);
         alertDialog.setMessage("Bạn hãy điền đầy đủ thông tin dưới đây!");
         LayoutInflater inflater = this.getLayoutInflater();
         View sign_up_layout = inflater.inflate(R.layout.sign_up_layout,null);
@@ -223,5 +216,4 @@ public class MainActivity extends AppCompatActivity {
         //-------
         alertDialog.show();
     }
-
 }

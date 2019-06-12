@@ -33,7 +33,7 @@ public class MyAlarm extends BroadcastReceiver {
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.mipmap.logo)
+                        .setSmallIcon(R.drawable.logo)
                         .setContentTitle("PTIT QUIZ")
                         .setContentText(content1+" "+content2)
                         .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)

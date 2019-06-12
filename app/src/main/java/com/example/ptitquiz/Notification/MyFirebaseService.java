@@ -1,6 +1,5 @@
 package com.example.ptitquiz.Notification;
 
-import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -10,27 +9,10 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.ptitquiz.MyAppPTITQuiz.MainActivity;
 import com.example.ptitquiz.MyAppPTITQuiz.exam;
-import com.example.ptitquiz.MyAppPTITQuiz.homeActivity;
-import com.example.ptitquiz.MyAppPTITQuiz.start_quiz;
 import com.example.ptitquiz.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Calendar;
 
 public class MyFirebaseService extends FirebaseMessagingService {
     String type = "";
@@ -72,8 +54,6 @@ public class MyFirebaseService extends FirebaseMessagingService {
 //        }else if(type.equals("message")){
 //            message = messageBody;
 //        }
-
-
             Intent intent = new Intent(this, exam.class);
             intent.putExtra("sinhvien",messageTitle);
             intent.putExtra("truyendulieu",messageBody);
@@ -93,9 +73,5 @@ public class MyFirebaseService extends FirebaseMessagingService {
                     .setPriority(NotificationManager.IMPORTANCE_HIGH);
             NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.notify(0, notificationBuilder.build());
-
-
     }
-
-
 }
