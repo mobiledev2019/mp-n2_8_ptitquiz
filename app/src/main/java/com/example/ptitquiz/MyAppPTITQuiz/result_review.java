@@ -51,7 +51,7 @@ public class result_review extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(result_review.this,homeActivity.class);
+                Intent intent = new Intent(result_review.this,base.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }

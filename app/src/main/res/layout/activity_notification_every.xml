@@ -33,7 +33,9 @@
             android:textColor="#000000"></Spinner>
         <EditText
             android:id="@+id/edtSoPhut"
-            android:hint="Nhập số phút"
+            android:hint="Nhập số phút( VD: 1)"
+            android:digits="0123456789."
+            android:inputType="numberDecimal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#000000"/>
@@ -63,6 +65,21 @@
                 android:textStyle="bold"
                 />
 
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            >
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/notification_every_bottom"
+                android:layout_gravity="center"
+                />
 
         </LinearLayout>
     </LinearLayout>

@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,6 +22,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ptitquiz.Adapter.AdapterSelectChuong;
+import com.example.ptitquiz.Model.SelectChuong;
 import com.example.ptitquiz.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +41,7 @@ public class selectsubject extends AppCompatActivity {
     private RadioGroup radioGroup;
     private Button btnSelect;
     private Spinner spinnerChonChuong;
+    LinearLayout linearLayoutGiaiThich;
     RelativeLayout relativeLayout,reLayoutChonChuong;
     private String selectChuong, giaiThich="";
     private ListView lv_mucluc;
@@ -46,6 +50,8 @@ public class selectsubject extends AppCompatActivity {
     private CheckBox ckb_giaithich;
     List<String> list ;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,21 +59,30 @@ public class selectsubject extends AppCompatActivity {
         AnhXa();
         Intent receive = getIntent();
         String monhoc = receive.getStringExtra("truyendulieu");
+
         if(monhoc!=null){
 
             ChangedTitle(monhoc);
             HienThiMucLuc(monhoc);
         }
+
+
+
+
         relativeLayout.setVisibility(View.INVISIBLE);
         reLayoutChonChuong.setVisibility(View.INVISIBLE);
-        final List<String> arrChuong = new ArrayList<>();
-        arrChuong.add("Chọn Chương");
-        arrChuong.add("C1");
-        arrChuong.add("C2");
-        arrChuong.add("C3");
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrChuong);
-        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
-        spinnerChonChuong.setAdapter(adapter);
+        linearLayoutGiaiThich.setVisibility(View.INVISIBLE);
+        final List<SelectChuong> arrChuong = new ArrayList<>();
+        arrChuong.add(new SelectChuong("CHỌN CHƯƠNG",R.drawable.icon_select_chuong));
+        arrChuong.add(new SelectChuong("CHƯƠNG 1",R.drawable.icon_select_chuong));
+        arrChuong.add(new SelectChuong("CHƯƠNG 2",R.drawable.icon_select_chuong));
+        arrChuong.add(new SelectChuong("CHƯƠNG 3",R.drawable.icon_select_chuong));
+
+
+        AdapterSelectChuong selectChuongAdapter = new AdapterSelectChuong(this,R.layout.customer_spinner_chonchuong,arrChuong);
+
+        spinnerChonChuong.setAdapter(selectChuongAdapter);
+
         btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +93,7 @@ public class selectsubject extends AppCompatActivity {
                             ExeRadioQuiz();
                             break;
                         case R.id.radio_review:
-                            if(selectChuong=="Chọn Chương"){
+                            if(selectChuong=="CHỌN CHƯƠNG"){
                                 Toast.makeText(selectsubject.this, "Chọn chương để làm bài", Toast.LENGTH_SHORT).show();
 
                             }else{
@@ -100,19 +115,32 @@ public class selectsubject extends AppCompatActivity {
                     case R.id.radio_review:
                         relativeLayout.setVisibility(View.VISIBLE);
                         reLayoutChonChuong.setVisibility(View.VISIBLE);
+                        linearLayoutGiaiThich.setVisibility(View.VISIBLE);
                         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
                         break;
                     case R.id.radio_quiz:
+                        linearLayoutGiaiThich.setVisibility(View.INVISIBLE);
                         relativeLayout.setVisibility(View.INVISIBLE);
                         reLayoutChonChuong.setVisibility(View.INVISIBLE);
                         break;
                 }
             }
         });
+
         spinnerChonChuong.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                selectChuong = arrChuong.get(position);
+                selectChuong="";
+                if(position==0){
+                    selectChuong = "CHỌN CHƯƠNG";
+                }else if(position==1){
+                    selectChuong = "C1";
+                }else if(position==2){
+                    selectChuong = "C2";
+                }else if(position==3){
+                    selectChuong = "C3";
+                }
+
 
             }
 
@@ -122,9 +150,12 @@ public class selectsubject extends AppCompatActivity {
             }
         });
         SuKienCBGiaiThich();
+
+
     }
 
     public void AnhXa(){
+
         ckb_giaithich = findViewById(R.id.chk_giaithich);
         tvTitlemucLuc = findViewById(R.id.tvtitlemucluc);
         lv_mucluc = findViewById(R.id.lv_mucluc);
@@ -135,6 +166,8 @@ public class selectsubject extends AppCompatActivity {
         radioQuiz = findViewById(R.id.radio_quiz);
         radioReview = findViewById(R.id.radio_review);
         btnSelect = findViewById(R.id.btnSelect);
+        linearLayoutGiaiThich = findViewById(R.id.layoutliner_giaithich);
+
     }
 
     private void ExeRadioQuiz(){
@@ -145,6 +178,7 @@ public class selectsubject extends AppCompatActivity {
         intent.putExtra("Subject","Quiz");
         startActivity(intent);
         overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+
     }
 
     private void ExeRadioReview(){
@@ -157,8 +191,10 @@ public class selectsubject extends AppCompatActivity {
             intent.putExtra("giaithich",giaiThich);
         }
         intent.putExtra("chuong",selectChuong);
+
         startActivity(intent);
         overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+
     }
 
     private void HienThiMucLuc(String monhoc){
@@ -166,27 +202,37 @@ public class selectsubject extends AppCompatActivity {
         final ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
         lv_mucluc.setAdapter(myArrayAdapter);
         reference = FirebaseDatabase.getInstance().getReference().child("QuestionReview").child(monhoc).child("mucluc");
+
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String myChildValue = dataSnapshot.getValue(String.class);
                 list.add(myChildValue);
                 myArrayAdapter.notifyDataSetChanged();
+
             }
+
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 myArrayAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
             }
+
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
     }
 
     private void ChangedTitle(String monhoc){
@@ -237,4 +283,11 @@ public class selectsubject extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
+
+
+
+
+
 }

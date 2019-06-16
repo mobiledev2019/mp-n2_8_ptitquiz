@@ -35,19 +35,19 @@ public class NotifyQuiz extends AppCompatActivity {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               final QuestionNotify questionNotify = dataSnapshot.getValue(QuestionNotify.class);
-               tvQuestion.setText(questionNotify.getQuestion()+" ?");
+                final QuestionNotify questionNotify = dataSnapshot.getValue(QuestionNotify.class);
+                tvQuestion.setText(questionNotify.getQuestion()+" ?");
 
-               btnTraLoi.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View v) {
-                       if(edtAnswer.getText().toString().equals("")){
-                           Toast.makeText(NotifyQuiz.this, "Nhập đáp án của bạn", Toast.LENGTH_SHORT).show();
-                       }else{
-                           Toast.makeText(NotifyQuiz.this, "Đáp án đúng là:"+questionNotify.getAnswer(), Toast.LENGTH_SHORT).show();
-                       }
-                   }
-               });
+                btnTraLoi.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(edtAnswer.getText().toString().equals("")){
+                            Toast.makeText(NotifyQuiz.this, "Nhập đáp án của bạn", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(NotifyQuiz.this, "Đáp án đúng là:"+questionNotify.getAnswer(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
             }
 

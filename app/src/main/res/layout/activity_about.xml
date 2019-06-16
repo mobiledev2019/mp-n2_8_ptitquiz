@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/abcde"
         android:orientation="vertical">
-        
+
     </LinearLayout>
     <TextView
         android:id="@+id/names"

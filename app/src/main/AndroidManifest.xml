@@ -37,7 +37,8 @@
         <activity
             android:name=".MyAppPTITQuiz.Scheduler"
             android:parentActivityName=".MyAppPTITQuiz.base" />
-        <activity android:name=".MyAppPTITQuiz.review_test" />
+        <activity android:name=".MyAppPTITQuiz.review_test"
+            android:parentActivityName=".MyAppPTITQuiz.homeActivity"/>
         <activity
             android:name=".MyAppPTITQuiz.start_review"
             android:parentActivityName=".MyAppPTITQuiz.selectsubject" />

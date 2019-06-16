@@ -32,7 +32,7 @@ public class quiz_test extends AppCompatActivity {
     Button btnAnswer1,btnAnswer2,btnAnswer3,btnAnswer4;
     DatabaseReference reference;
     int index = 1, index2 =0 , ca = 0, wa = 0,score=0;
-    String urlGetData = "http://192.168.1.249/PTIT_Quiz/";
+    String urlGetData = "http://baitaplon.cf/android/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

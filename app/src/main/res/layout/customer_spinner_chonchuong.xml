@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/img_icon_select"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:src="@drawable/icon_select_chuong"
+        />
+    <TextView
+        android:id="@+id/tv_chuong_custom"
+        android:layout_toRightOf="@+id/img_icon_select"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Chương 1"
+        android:paddingBottom="5dp"
+        android:textSize="30sp"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+
+        />
+</RelativeLayout>

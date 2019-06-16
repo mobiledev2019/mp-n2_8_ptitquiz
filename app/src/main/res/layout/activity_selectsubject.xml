@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout android:orientation="vertical"
-    android:background="@color/blackbgr"
+    android:background="@drawable/bgr_book_all"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,7 +25,8 @@
                 android:textSize="25sp"
                 android:text="Kiểm tra"
                 android:button="@drawable/custom_radiobutton"
-
+                android:scaleX="1"
+                android:scaleY="1"
                 android:textColor="@color/white"
                 android:id="@+id/radio_quiz"
                 android:layout_width="wrap_content"
@@ -42,6 +43,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
+            <LinearLayout
+                android:id="@+id/layoutliner_giaithich"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giải thích khi sai"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+
+
+                    />
+                <CheckBox
+
+                    android:id="@+id/chk_giaithich"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:layout_marginLeft="30dp"
+                    android:button="@drawable/custom_checkbox"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="right"
+                    android:textSize="20sp"
+                    android:textColor="@color/white" />
+            </LinearLayout>
 
 
         </RadioGroup>
@@ -52,40 +85,13 @@
             android:id="@+id/reLayoutSelectChuong"
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="100dp">
-            <TextView
-                android:textColor="@color/common_google_signin_btn_text_dark"
-                android:id="@+id/chonChuong"
-                android:textSize="25sp"
-                android:gravity="center_horizontal"
-                android:background="@color/blue"
-
-                android:text="Chọn Chương"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                />
-
-            <CheckBox
-
-                android:id="@+id/chk_giaithich"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:layout_toRightOf="@+id/spnChonChuong"
-                android:layout_alignParentBottom="true"
-                android:checked="true"
-                android:button="@drawable/custom_checkbox"
-                android:layout_marginBottom="5dp"
-                android:text="Có giải thích khi sai!"
-                android:textColor="@color/white" />
-
+            android:layout_height="80dp">
             <Spinner
                 android:id="@+id/spnChonChuong"
                 style="@android:style/Widget.Spinner.DropDown"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="16dp"
                 android:layout_marginBottom="13dp"
@@ -93,7 +99,12 @@
                 android:ellipsize="marquee"
 
                 android:textStyle="bold"
+
                 />
+
+
+
+
 
 
         </RelativeLayout>
@@ -101,13 +112,14 @@
     </LinearLayout>
 
     <Button
+        android:background="@drawable/buttons_play"
         android:id="@+id/btnSelect"
         android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="127dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="LÀM BÀI" />
+        />
 
 
 
@@ -116,11 +128,12 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background_book"
         android:layout_marginTop="30dp"
         tools:context="com.example.ptitquiz.MyAppPTITQuiz">
         <TextView
-            android:background="@color/blue"
-            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:gravity="center_horizontal"
             android:id="@+id/tvtitlemucluc"
@@ -149,7 +162,7 @@
         <!--android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>-->
         <ListView
             android:id="@+id/lv_mucluc"
-            android:background="@color/darkGray"
+
             android:layout_margin="16dp"
             android:layout_below="@id/tvtitlemucluc"
             android:layout_width="match_parent"
